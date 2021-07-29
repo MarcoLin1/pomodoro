@@ -1,0 +1,10 @@
+$gold: #F2F0C9;
+
+%icon-style {
+  background: $gold;
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  width: 70px;
+  height: 70px;
+  cursor: pointer;
+}
