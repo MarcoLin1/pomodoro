@@ -117,4 +117,13 @@
     }
   }
 }
+
+@media screen and (min-width: 1300px) {
+  .middle__wrapper {
+    .middle__wrapper__content {
+      width: 500px;
+      height: 500px;
+    }
+  }
+}
 </style>

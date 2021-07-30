@@ -12,13 +12,18 @@ const routes = [
   },
   {
     path: '/clock',
-    name: 'Clock',
+    name: 'clock',
     component: () => import('./../components/Clock.vue')
   },
   {
     path: '/list',
     name: 'todo-list',
     component: () => import('./../views/Todo.vue')
+  },
+  {
+    path: '/trendtable',
+    name: 'trend-table',
+    component: () => import('./../views/TrendTable.vue')
   }
 ]
 

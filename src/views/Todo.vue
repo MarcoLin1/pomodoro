@@ -6,18 +6,7 @@
         <div class="todo__wrapper__left__circle" />
       </div>
       <div class="todo__wrapper__right">
-        <div class="todo__wrapper__right__circle" />
-        <div class="todo__wrapper__right__icons__container">
-          <div class="todo__wrapper__right__icon__wrapper">
-            <div class="todo__wrapper__right__icon icon_item" />
-          </div>
-          <div class="todo__wrapper__right__icon__wrapper">
-            <div class="todo__wrapper__right__icon icon_chart" />
-          </div>
-          <div class="todo__wrapper__right__icon__wrapper">
-            <div class="todo__wrapper__right__icon icon_setting" />
-          </div>
-        </div>
+        <Background />
         <div class="todo__wrapper__right__container">
           <div class="todo__wrapper__right__input__group">
             <input
@@ -71,10 +60,12 @@
 
 <script>
 import Clock from './../components/Clock.vue'
+import Background from './../components/Background.vue'
 export default {
   name: 'Todo',
   components: {
-    Clock
+    Clock,
+    Background
   },
   data () {
     return {
@@ -124,19 +115,7 @@ export default {
     height: 100%;
     position: relative;
     padding-top: 10px;
-    .todo__wrapper__right__icons__container {
-      .todo__wrapper__right__icon__wrapper {
-        .icon_item, .icon_chart, .icon_setting {
-          @extend %icon-style;
-          width: 50px;
-          height: 50px;
-          position: absolute;
-          left: 10px;
-          top: 10px;
-          display: none;
-        }
-      }
-    }
+    max-width: 800px;
     .todo__wrapper__right__input__group {
       position: relative;
       width: 95%;
@@ -258,46 +237,11 @@ export default {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
-      .todo__wrapper__right__circle {
-        width: 400px;
-        height: 500px;
-        background: #C12C37;
-        border-radius: 400px 0 0 400px;
-      }
-      .todo__wrapper__right__icons__container {
-        position: absolute;
-        left: 15%;
-        top: 25%;
-        .todo__wrapper__right__icon__wrapper {
-          width: 70px;
-          height: 70px;
-          border-radius: 50%;
-          border: 1px solid $gold;
-          position: relative;
-          margin-bottom: 15px;
-          .icon_item {
-            mask-image: url('./../assets/image/icon_item.svg');
-            -webkit-mask-image: url('./../assets/image/icon_item.svg');
-            display: block;
-          }
-          .icon_chart {
-            mask-image: url('./../assets/image/icon_chart.svg');
-            -webkit-mask-image: url('./../assets/image/icon_chart.svg');
-            display: block;
-          }
-          .icon_setting {
-            mask-image: url('./../assets/image/icon_setting.svg');
-            -webkit-mask-image: url('./../assets/image/icon_setting.svg');
-            display: block;
-          }
-        }
-      }
       .todo__wrapper__right__container {
         position: absolute;
         top: 10%;
         width: 270px;
         margin-right: 10px;
-        // width: 100%;
       }
     }
   }
@@ -309,9 +253,6 @@ export default {
         padding-top: 30px;
         width: 300px;
       }
-      .todo__wrapper__right__circle {
-        width: 500px;
-      }
     }
   }
 }
@@ -320,9 +261,6 @@ export default {
     .todo__wrapper__right {
       .todo__wrapper__right__container {
         width: 400px;
-      }
-      .todo__wrapper__right__circle {
-        width: 600px;
       }
     }
   }
