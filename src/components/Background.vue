@@ -4,15 +4,23 @@
       <div class="todo__wrapper__right">
         <div class="todo__wrapper__right__circle" />
         <div class="todo__wrapper__right__icons__container">
-          <div class="todo__wrapper__right__icon__wrapper">
-            <div class="todo__wrapper__right__icon icon_item" />
-          </div>
-          <div class="todo__wrapper__right__icon__wrapper">
-            <div class="todo__wrapper__right__icon icon_chart" />
-          </div>
-          <div class="todo__wrapper__right__icon__wrapper">
-            <div class="todo__wrapper__right__icon icon_setting" />
-          </div>
+          <router-link
+            to="/list"
+          >
+            <div class="todo__wrapper__right__icon__wrapper">
+              <div class="todo__wrapper__right__icon icon_item" />
+            </div>
+          </router-link>
+          <router-link to="/trendtable">
+            <div class="todo__wrapper__right__icon__wrapper">
+              <div class="todo__wrapper__right__icon icon_chart" />
+            </div>
+          </router-link>
+          <router-link to="/setting">
+            <div class="todo__wrapper__right__icon__wrapper">
+              <div class="todo__wrapper__right__icon icon_setting" />
+            </div>
+          </router-link>
         </div>
       </div>
     </div>
@@ -79,6 +87,7 @@ export default {
         position: relative;
         right: 80%;
         top: -400px;
+        z-index: 10;
         .todo__wrapper__right__icon__wrapper {
           width: 70px;
           height: 70px;

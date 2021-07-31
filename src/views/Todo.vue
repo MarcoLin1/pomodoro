@@ -8,18 +8,24 @@
       <div class="todo__wrapper__right">
         <Background />
         <div class="todo__wrapper__right__container">
-          <div class="todo__wrapper__right__input__group">
-            <input
-              type="text"
-              class="todo__wrapper__right__input"
-            >
-            <button
-              type="submit"
-              class="todo__wrapper__right__button"
-            >
-              +
-            </button>
-          </div>
+          <form
+            action=""
+            @submit.stop.prevent="addNewTodo"
+          >
+            <div class="todo__wrapper__right__input__group">
+              <input
+                v-model="newTodo"
+                type="text"
+                class="todo__wrapper__right__input"
+              >
+              <button
+                type="submit"
+                class="todo__wrapper__right__button"
+              >
+                +
+              </button>
+            </div>
+          </form>
           <div class="todo__wrapper__right__table">
             <div class="todo__wrapper__right__calendar__group">
               <div class="todo__wrapper__right__calendar__icon" />
@@ -95,7 +101,23 @@ export default {
           item: 'Go to office',
           isCheck: false
         }
-      ]
+      ],
+      newTodo: ''
+    }
+  },
+  methods: {
+    addNewTodo () {
+      const text = this.newTodo && this.newTodo.trim()
+      const length = this.todoList.length - 1
+      const newId = this.todoList[length].id + 1
+      if (!text) {
+        return
+      }
+      this.todoList.push({
+        id: newId,
+        item: text
+      })
+      this.newTodo = ''
     }
   }
 }
@@ -187,6 +209,7 @@ export default {
       border-radius: 50%;
       border: 2px solid $gold;
       margin-right: 10px;
+      cursor: pointer;
       &:focus {
         outline: 0;
       }
@@ -201,6 +224,10 @@ export default {
         position: absolute;
         top: 3px;
         left: 10px;
+      }
+      &:checked ~ .todo__wrapper__right__item__name {
+        text-decoration: line-through;
+        font-style: italic;
       }
     }
     .todo__wrapper__right__item__name {

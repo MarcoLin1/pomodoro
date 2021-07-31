@@ -87,6 +87,20 @@
   }
 }
 
+@media screen and (min-width: 700px) {
+  .chart__wrapper__left {
+    .chart__wrapper__left__circle {
+      display: block;
+      width: 200px;
+      height: 350px;
+      background: #C12C37;
+      border-radius: 0px 200px 200px 0px;
+      position: absolute;
+      top: 0;
+    }
+  }
+}
+
 @media screen and (min-width: 850px) {
   .chart__wrapper {
     .chart__wrapper__right {
