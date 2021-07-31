@@ -7,7 +7,7 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'home',
     component: Home
   },
   {
@@ -24,6 +24,11 @@ const routes = [
     path: '/trendtable',
     name: 'trend-table',
     component: () => import('./../views/TrendTable.vue')
+  },
+  {
+    path: '/setting',
+    name: 'setting',
+    component: () => import('./../views/Setting.vue')
   }
 ]
 
