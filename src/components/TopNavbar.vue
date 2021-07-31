@@ -76,4 +76,9 @@
     }
   }
 }
+@media screen and (min-width: 850px) {
+  .top__navbar__hamburger {
+    display: none;
+  }
+}
 </style>
