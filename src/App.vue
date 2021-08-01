@@ -22,6 +22,6 @@ export default {
 @import './assets/scss/reset.scss';
 #app {
   background: #BC2B35;
-  min-width: 490px;
+  min-width: 650px;
 }
 </style>

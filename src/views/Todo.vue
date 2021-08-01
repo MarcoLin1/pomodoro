@@ -130,13 +130,14 @@ export default {
   margin-top: 20px;
   display: flex;
   .todo__wrapper__left {
+    padding-top: 35px;
     width: 100%;
   }
   .todo__wrapper__right {
     width: 100%;
     height: 100%;
     position: relative;
-    padding-top: 10px;
+    margin: 10px 0 0 10px;
     max-width: 800px;
     .todo__wrapper__right__input__group {
       position: relative;
@@ -267,7 +268,7 @@ export default {
       .todo__wrapper__right__container {
         position: absolute;
         top: 10%;
-        width: 270px;
+        width: 340px;
         margin-right: 10px;
       }
     }
@@ -277,8 +278,8 @@ export default {
   .todo__wrapper {
     .todo__wrapper__right {
       .todo__wrapper__right__container {
-        padding-top: 30px;
-        width: 300px;
+        // padding-top: 30px;
+        width: 380px;
       }
     }
   }

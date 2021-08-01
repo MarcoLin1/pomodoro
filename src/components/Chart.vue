@@ -40,8 +40,8 @@ export default {
     )
     Chart.defaults.global.defaultFontColor = '#F2F0C9'
     const lineChart = document.querySelector('#line-chart')
-    lineChart.style.height = '370px'
-    lineChart.style.width = '370px'
+    lineChart.style.height = '340px'
+    lineChart.style.width = '340px'
   }
 }
 </script>

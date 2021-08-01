@@ -129,21 +129,25 @@ export default {
   display: flex;
   .setting__wrapper__left {
     width: 100%;
-    padding-top: 50px;
+    padding-top: 35px;
   }
   .setting__wrapper__right {
     position: relative;
     margin-left: 10px;
-    margin-right: 10px;
+    // margin-right: 10px;
     // padding-top: 10px;
     width: 100%;
+    max-width: 800px;
     &__container {
-      position: relative;
-      top: 10%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      // position: relative;
+      // top: 10%;
+      // display: flex;
+      // flex-direction: column;
+      // align-items: center;
       width: 100%;
+      width: 300px;
+      padding-top: 20px;
+      padding-right: 10px;
     }
     &__group {
       width: 100%;
@@ -235,10 +239,23 @@ export default {
 }
 @media screen and (min-width: 850px) {
   .setting__wrapper {
+    .setting__wrapper__right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
     .setting__wrapper__right__container {
-      top: -63%;
-      max-width: 370px;
-      margin: 0 0 0 auto;
+      position: absolute;
+      top: 10%;
+      width: 340px;
+      margin-right: 10px;
+    }
+  }
+}
+@media screen and (min-width: 1016px) {
+  .setting__wrapper {
+    .setting__wrapper__right__container {
+      width: 380px;
     }
   }
 }
@@ -248,7 +265,6 @@ export default {
       width: auto;
     }
     .setting__wrapper__right__container {
-      top: -63%;
       max-width: 420px;
       margin: 0 0 0 auto;
     }
