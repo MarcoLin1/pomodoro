@@ -5,6 +5,7 @@
         <Clock
           :initial-working-time="newWorkingTime"
           :initial-todo-list="todoList"
+          :initial-resting-time="newRestingTime"
         />
         <div class="setting__wrapper__left__circle" />
       </div>
@@ -47,18 +48,19 @@
                 id="restingTime"
                 name="restingTime"
                 class="resting__time"
+                @change="restingTime"
               >
+                <option value="5">
+                  5 min
+                </option>
+                <option value="10">
+                  10 min
+                </option>
                 <option value="15">
                   15 min
                 </option>
                 <option value="20">
                   20 min
-                </option>
-                <option value="25">
-                  25 min
-                </option>
-                <option value="30">
-                  30 min
                 </option>
               </select>
             </div>
@@ -96,13 +98,22 @@
                 <option value="1">
                   Basic
                 </option>
-                <option value="2">
+                <option
+                  value="2"
+                  disabled
+                >
                   Jazz
                 </option>
-                <option value="3">
+                <option
+                  value="3"
+                  disabled
+                >
                   Hip Hop
                 </option>
-                <option value="4">
+                <option
+                  value="4"
+                  disabled
+                >
                   Romantic
                 </option>
               </select>
@@ -128,7 +139,8 @@ export default {
   data () {
     return {
       beepAudio: new Audio(beep),
-      newWorkingTime: 0
+      newWorkingTime: 0,
+      newRestingTime: 0
     }
   },
   computed: {
@@ -146,6 +158,10 @@ export default {
     workingTime () {
       const workingTime = document.querySelector('#workingTime')
       this.newWorkingTime = Number(workingTime.value)
+    },
+    restingTime () {
+      const restingTime = document.querySelector('#restingTime')
+      this.newRestingTime = Number(restingTime.value)
     }
   }
 }

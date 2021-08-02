@@ -101,7 +101,7 @@
         {{ nowTodo }}
       </div>
       <div class="middle__wrapper__time">
-        {{ timeDisplay }}
+        {{ timeDisplay() }}
       </div>
       <div class="middle__wrapper__icons__wrapper">
         <div
@@ -165,6 +165,9 @@ export default {
     },
     initialWorkingTime: {
       type: Number
+    },
+    initialRestingTime: {
+      type: Number
     }
   },
   data () {
@@ -194,19 +197,17 @@ export default {
     }
   },
   computed: {
-    timeDisplay () {
-      const minutes = parseInt(this.currentTimeInSeconds / 60)
-      const seconds = this.currentTimeInSeconds % 60
-      const paddedMinutes = ('0' + minutes).slice(-2)
-      const paddedSeconds = ('0' + seconds).slice(-2)
-      return `${paddedMinutes}:${paddedSeconds}`
-    },
     ...mapState(['todoList'])
   },
   watch: {
     initialWorkingTime (newValue) {
       if (newValue > 0) {
-        this.timeDisplay()
+        this.currentTimeInSeconds = newValue * 60
+      }
+    },
+    initialRestingTime (newValue) {
+      if (newValue > 0) {
+        this.resetDuration = newValue * 60
       }
     }
   },
@@ -227,6 +228,13 @@ export default {
     this.handleTodos()
   },
   methods: {
+    timeDisplay () {
+      const minutes = parseInt(this.currentTimeInSeconds / 60)
+      const seconds = this.currentTimeInSeconds % 60
+      const paddedMinutes = ('0' + minutes).slice(-2)
+      const paddedSeconds = ('0' + seconds).slice(-2)
+      return `${paddedMinutes}:${paddedSeconds}`
+    },
     handleTodos () {
       this.nowTodo = this.todos[0].item
       this.nextTodo = this.todos[1].item
