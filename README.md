@@ -19,6 +19,8 @@ https://marcolin1.github.io/pomodoro/#/
 - Vue Router
 - Vuex
 - SCSS
+- Vue-chart.js
+- ProgressBar.js
 
 ## Project setup
 
