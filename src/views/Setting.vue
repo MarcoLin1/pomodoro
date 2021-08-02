@@ -2,7 +2,10 @@
   <div class="setting__container">
     <div class="setting__wrapper">
       <div class="setting__wrapper__left">
-        <Clock :initial-working-time="newWorkingTime" />
+        <Clock
+          :initial-working-time="newWorkingTime"
+          :initial-todo-list="todoList"
+        />
         <div class="setting__wrapper__left__circle" />
       </div>
       <div class="setting__wrapper__right">
@@ -115,6 +118,7 @@
 import Background from './../components/Background.vue'
 import Clock from './../components/Clock.vue'
 import beep from './../assets/ring/beep.mp3'
+import { mapState } from 'vuex'
 export default {
   name: 'Setting',
   components: {
@@ -126,6 +130,9 @@ export default {
       beepAudio: new Audio(beep),
       newWorkingTime: 0
     }
+  },
+  computed: {
+    ...mapState(['todoList'])
   },
   methods: {
     turnOnRing () {

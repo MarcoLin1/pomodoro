@@ -2,7 +2,7 @@
   <div class="chart__container">
     <div class="chart__wrapper">
       <div class="chart__wrapper__left">
-        <Clock />
+        <Clock :initial-todo-list="todoList" />
         <div class="chart__wrapper__left__circle" />
       </div>
       <div class="chart__wrapper__right">
@@ -72,8 +72,6 @@
       top: 20px;
       width: 300px;
       right: 0;
-      // display: flex;
-      // justify-content: flex-end;
     }
     .chart__wrapper__right__table {
       position: relative;
@@ -159,8 +157,8 @@ import Background from '../components/Background.vue'
 import Chart from './../components/Chart.vue'
 import axios from 'axios'
 import moment from 'moment'
+import { mapState } from 'vuex'
 export default {
-  name: 'TrendTable',
   components: {
     Clock,
     Background,
@@ -193,6 +191,9 @@ export default {
         backgroundColor: '#f2f0c940'
       }
     }
+  },
+  computed: {
+    ...mapState(['todoList'])
   },
   created () {
     this.fetchData()

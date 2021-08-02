@@ -171,7 +171,7 @@ export default {
     // 25 mins to convert to seconds
     const pomodoroDuration = 25 * 60
     return {
-      todos: this.todoList,
+      todos: this.initialTodoList,
       nowTodo: '',
       nextTodo: '',
       pomodoroDuration: pomodoroDuration,
@@ -352,8 +352,6 @@ export default {
     .middle__wrapper__content {
       width: 330px;
       height: 330px;
-      // border-radius: 50%;
-      // border: 2px solid $gold;
       margin: 10px auto 0 auto;
       position: relative;
       display: flex;
@@ -458,7 +456,7 @@ export default {
 @media screen and (min-width: 850px) {
   .middle__wrapper {
     .middle__wrapper__inner {
-      top: -42%;
+      top: -45%;
     }
   }
 }

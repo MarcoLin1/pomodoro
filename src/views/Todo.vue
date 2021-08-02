@@ -174,7 +174,6 @@ export default {
         position: relative;
         display: flex;
         align-items: center;
-        // border-bottom: 1px dashed $gold;
         margin-bottom: 10px;
         padding: 0 5px 5px 5px;
       }

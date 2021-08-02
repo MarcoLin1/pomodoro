@@ -4,36 +4,46 @@
       <form action="">
         <div class="left__wrapper">
           <div class="left__wrapper__circle" />
-          <div class="left__wrapper__input__group">
-            <input
-              id="text"
-              type="text"
-              name="text"
-              class="left__wrapper__input"
-              placeholder="Add a new mission..."
-            >
-            <button
-              type="submit"
-              class="left__wrapper__submit"
-            >
-              +
-            </button>
-          </div>
+          <form action="">
+            <div class="left__wrapper__input__group">
+              <input
+                id="text"
+                type="text"
+                name="text"
+                class="left__wrapper__input"
+                placeholder="Add a new mission..."
+              >
+              <button
+                type="submit"
+                class="left__wrapper__submit"
+              >
+                +
+              </button>
+            </div>
+          </form>
         </div>
       </form>
-      <Clock />
+      <div class="home__middle__wrapper">
+        <Clock :initial-todo-list="todoList" />
+      </div>
       <div class="right__wrapper">
         <div class="right__wrapper__circle" />
         <div class="right__wrapper__icons__wrapper">
-          <div class="right__wrapper__icon__container">
-            <div class="right__wrapper__icon icon__item" />
-          </div>
-          <div class="right__wrapper__icon__container">
-            <div class="right__wrapper__icon icon__chart" />
-          </div>
-          <div class="right__wrapper__icon__container">
-            <div class="right__wrapper__icon icon__setting" />
-          </div>
+          <router-link to="/list">
+            <div class="right__wrapper__icon__container">
+              <div class="right__wrapper__icon icon__item" />
+            </div>
+          </router-link>
+          <router-link to="/trendtable">
+            <div class="right__wrapper__icon__container">
+              <div class="right__wrapper__icon icon__chart" />
+            </div>
+          </router-link>
+          <router-link to="/setting">
+            <div class="right__wrapper__icon__container">
+              <div class="right__wrapper__icon icon__setting" />
+            </div>
+          </router-link>
         </div>
       </div>
     </div>
@@ -45,10 +55,14 @@
 
 <script>
 import Clock from './../components/Clock.vue'
+import { mapState } from 'vuex'
 export default {
   name: 'Home',
   components: {
     Clock
+  },
+  computed: {
+    ...mapState(['todoList'])
   }
 }
 </script>
@@ -111,7 +125,7 @@ export default {
     .right__wrapper__icons__wrapper {
       position: absolute;
       right: 7%;
-      top: 16%;
+      top: 10%;
       .right__wrapper__icon__container {
         width: 70px;
         height: 70px;
