@@ -2,7 +2,7 @@
   <div class="setting__container">
     <div class="setting__wrapper">
       <div class="setting__wrapper__left">
-        <Clock />
+        <Clock :initial-working-time="newWorkingTime" />
         <div class="setting__wrapper__left__circle" />
       </div>
       <div class="setting__wrapper__right">
@@ -20,6 +20,7 @@
                 id="workingTime"
                 name="workingTime"
                 class="working__time"
+                @change="workingTime"
               >
                 <option value="15">
                   15 min
@@ -72,6 +73,7 @@
                   id="switch"
                   type="checkbox"
                   class="setting__wrapper__right__item__switch"
+                  @click="turnOnRing"
                 >
                 <label
                   for="switch"
@@ -112,11 +114,32 @@
 <script>
 import Background from './../components/Background.vue'
 import Clock from './../components/Clock.vue'
+import beep from './../assets/ring/beep.mp3'
 export default {
   name: 'Setting',
   components: {
     Background,
     Clock
+  },
+  data () {
+    return {
+      beepAudio: new Audio(beep),
+      newWorkingTime: 0
+    }
+  },
+  methods: {
+    turnOnRing () {
+      const checkbox = document.querySelector('#switch')
+      if (!checkbox.checked) {
+        this.beepAudio.pause()
+      } else {
+        this.beepAudio.play()
+      }
+    },
+    workingTime () {
+      const workingTime = document.querySelector('#workingTime')
+      this.newWorkingTime = Number(workingTime.value)
+    }
   }
 }
 </script>

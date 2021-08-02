@@ -14,7 +14,7 @@
                 Today
               </div>
               <div class="chart__wrapper__right__number">
-                7
+                {{ todayNum }}
               </div>
             </div>
             <div class="chart__wrapper__right__text__item">
@@ -22,7 +22,7 @@
                 Weekly
               </div>
               <div class="chart__wrapper__right__number">
-                60
+                {{ weeklyNum }}
               </div>
             </div>
             <div class="chart__wrapper__right__text__item">
@@ -160,6 +160,7 @@ import Chart from './../components/Chart.vue'
 import axios from 'axios'
 import moment from 'moment'
 export default {
+  name: 'TrendTable',
   components: {
     Clock,
     Background,
@@ -168,6 +169,8 @@ export default {
   data () {
     return {
       arrPositive: [],
+      todayNum: 0,
+      weeklyNum: 0,
       chartOptions: {
         responsive: true,
         maintainAspectRatio: false,
@@ -197,13 +200,15 @@ export default {
   methods: {
     async fetchData () {
       try {
-        const { data } = await axios.get('https://api.covid19api.com/total/country/taiwan/status/confirmed?from=2021-07-20T00:00:00Z&to=2021-07-28T00:00:00Z')
+        let { data } = await axios.get('https://api.covid19api.com/dayone/country/taiwan/status/confirmed')
+        data = data.slice(1, 8)
         data.forEach(data => {
           const date = moment(data.Date, 'YYYYMMDD').format('MMDD')
           const total = data.Cases
+          this.weeklyNum += data.Cases
           this.arrPositive.push({ date, total })
         })
-        console.log(this.arrPositive)
+        this.todayNum = this.arrPositive[this.arrPositive.length - 1].total
       } catch (e) {
         console.log(e)
       }
