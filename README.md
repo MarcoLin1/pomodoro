@@ -2,13 +2,9 @@
 
 ## Demo
 
----
-
 https://marcolin1.github.io/pomodoro/#/
 
 ## Features
-
----
 
 - Submit new task on input column to add it
 - Click "next" icon to change to the next task
@@ -18,8 +14,6 @@ https://marcolin1.github.io/pomodoro/#/
 ![image](https://github.com/MarcoLin1/pomodoro/blob/develop/main%20page.png)
 
 ## Development Environment
-
----
 
 - Vue 2
 - Vue Router
