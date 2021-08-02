@@ -2,7 +2,7 @@
   <div class="todo__container">
     <div class="todo__wrapper">
       <div class="todo__wrapper__left">
-        <Clock />
+        <Clock :initial-todo-list="todoList" />
         <div class="todo__wrapper__left__circle" />
       </div>
       <div class="todo__wrapper__right">
@@ -67,6 +67,7 @@
 <script>
 import Clock from './../components/Clock.vue'
 import Background from './../components/Background.vue'
+import { mapState } from 'vuex'
 export default {
   name: 'Todo',
   components: {
@@ -75,35 +76,11 @@ export default {
   },
   data () {
     return {
-      todoList: [
-        {
-          id: 1,
-          item: 'Call to Mars',
-          isCheck: true
-        },
-        {
-          id: 2,
-          item: 'Clean up the desk',
-          isCheck: true
-        },
-        {
-          id: 3,
-          item: 'Work out',
-          isCheck: true
-        },
-        {
-          id: 4,
-          item: 'Cook for lunch',
-          isCheck: false
-        },
-        {
-          id: 5,
-          item: 'Go to office',
-          isCheck: false
-        }
-      ],
       newTodo: ''
     }
+  },
+  computed: {
+    ...mapState(['todoList'])
   },
   methods: {
     addNewTodo () {
@@ -115,7 +92,8 @@ export default {
       }
       this.todoList.push({
         id: newId,
-        item: text
+        item: text,
+        isCheck: false
       })
       this.newTodo = ''
     }
@@ -234,7 +212,7 @@ export default {
     .todo__wrapper__right__item__name {
       color: $gold;
       width: 100%;
-      font-size: 0.8rem;
+      font-size: 1rem;
       padding: 5px;
       border-bottom: 1px dashed $gold;
     }

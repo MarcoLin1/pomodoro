@@ -86,26 +86,6 @@
           d="M160.17,0A172,172,0,0,0,0,161.51"
         />
       </svg>
-      <!-- <div class="middle__wrapper__title">
-        Clean up the desk
-      </div>
-      <div class="middle__wrapper__time">
-        {{ timeDisplay }}
-      </div>
-      <div class="middle__wrapper__icons__wrapper">
-        <div class="middle__wrapper__icon__container">
-          <div class="middle__wrapper__icon icon__ring" />
-        </div>
-        <div class="middle__wrapper__icon__container">
-          <div
-            class="middle__wrapper__icon icon__play"
-            @click="handleButtonClick"
-          />
-        </div>
-        <div class="middle__wrapper__icon__container">
-          <div class="middle__wrapper__icon icon__next" />
-        </div>
-      </div> -->
     </div>
     <div class="middle__wrapper__content middle__wrapper__inner">
       <div
@@ -118,7 +98,7 @@
         v-else
         class="middle__wrapper__title"
       >
-        Clean up the desk
+        {{ nowTodo }}
       </div>
       <div class="middle__wrapper__time">
         {{ timeDisplay }}
@@ -161,11 +141,14 @@
           />
         </div>
         <div class="middle__wrapper__icon__container">
-          <div class="middle__wrapper__icon icon__next" />
+          <div
+            class="middle__wrapper__icon icon__next"
+            @click="handleToNextTodo"
+          />
         </div>
       </div>
       <div class="middle__wrapper__footer__text">
-        Next: Feed the cat
+        Next: {{ nextTodo }}
       </div>
     </div>
   </div>
@@ -174,11 +157,23 @@
 <script>
 import ProgressBar from 'progressbar.js'
 import beep from './../assets/ring/beep.mp3'
+import { mapState } from 'vuex'
 export default {
+  props: {
+    initialTodoList: {
+      type: Array
+    },
+    initialWorkingTime: {
+      type: Number
+    }
+  },
   data () {
     // 25 mins to convert to seconds
     const pomodoroDuration = 25 * 60
     return {
+      todos: this.todoList,
+      nowTodo: '',
+      nextTodo: '',
       pomodoroDuration: pomodoroDuration,
       currentTimeInSeconds: pomodoroDuration,
       resetDuration: 5 * 60,
@@ -204,11 +199,15 @@ export default {
       const seconds = this.currentTimeInSeconds % 60
       const paddedMinutes = ('0' + minutes).slice(-2)
       const paddedSeconds = ('0' + seconds).slice(-2)
-      // console.log('minutes:', minutes)
-      // console.log('seconds:', seconds)
-      // console.log('paddedMinutes:', paddedMinutes)
-      // console.log('paddedSeconds:', paddedSeconds)
       return `${paddedMinutes}:${paddedSeconds}`
+    },
+    ...mapState(['todoList'])
+  },
+  watch: {
+    initialWorkingTime (newValue) {
+      if (newValue > 0) {
+        this.timeDisplay()
+      }
     }
   },
   mounted () {
@@ -224,11 +223,27 @@ export default {
     this.bottomLeft = new ProgressBar.Path('#bottom-left', this.pathOptions)
     this.bottomLeft.set(1)
   },
+  created () {
+    this.handleTodos()
+  },
   methods: {
+    handleTodos () {
+      this.nowTodo = this.todos[0].item
+      this.nextTodo = this.todos[1].item
+    },
+    handleToNextTodo () {
+      this.todos = this.todos.slice(1, this.todos.length)
+      if (this.todos.length >= 2) {
+        this.nowTodo = this.todos[0].item
+        this.nextTodo = this.todos[1].item
+      } else if (this.todos.length === 1) {
+        this.nowTodo = this.todos[0].item
+        this.nextTodo = ''
+      } else {
+        this.nowTodo = ''
+      }
+    },
     handleButtonClick () {
-      // this.interval = setInterval(() => {
-      //   this.currentTimeInSeconds -= 1
-      // }, 1000)
       this.animateBar()
       this.startTimer = false
     },
@@ -252,7 +267,6 @@ export default {
     },
     handleRingStart () {
       this.turnOn = true
-      // this.beepAudio.play()
     },
     handleRingStop () {
       this.turnOn = false
@@ -260,36 +274,27 @@ export default {
     },
     animateBar () {
       this.reduceTime()
-      // const segment = null
       switch (this.currentSegment) {
         case 1:
-          // segment = this.topRight
-          this.topRight.animate(0, { duration: (this.currentTimeInSeconds + 0.5) * 1000 }, this.onFinish)
+          this.topRight.animate(0,
+            { duration: (this.currentTimeInSeconds + 0.5) * 1000 }, this.onFinish)
           break
         case 2:
-          // segment = this.bottomRight
-          this.bottomRight.animate(0, { duration: (this.currentTimeInSeconds + 0.5) * 1000 }, this.onFinish)
+          this.bottomRight.animate(0,
+            { duration: (this.currentTimeInSeconds + 0.5) * 1000 }, this.onFinish)
           break
         case 3:
-          // segment = this.bottomLeft
-          this.bottomLeft.animate(0, { duration: (this.currentTimeInSeconds + 0.5) * 1000 }, this.onFinish)
+          this.bottomLeft.animate(0,
+            { duration: (this.currentTimeInSeconds + 0.5) * 1000 }, this.onFinish)
           break
         case 4:
-          // segment = this.topLeft
-          this.topLeft.animate(0, { duration: (this.currentTimeInSeconds + 0.5) * 1000 }, this.onFinish)
+          this.topLeft.animate(0,
+            { duration: (this.currentTimeInSeconds + 0.5) * 1000 }, this.onFinish)
           break
       }
-      // segment.animate(0,
-      //   {
-      //     duration: (this.currentTimeInSeconds + 1) * 1000
-      //   },
-      //   this.onFinish
-      // )
     },
     onFinish () {
       if (this.currentTimeInSeconds <= 0) {
-        // clearInterval(this.interval)
-
         if (this.currentSegment < 4) {
           this.currentSegment += 1
         } else {
@@ -432,7 +437,6 @@ export default {
     }
     .middle__wrapper__footer__text {
       text-align: center;
-      // margin-top: 20px;
       color: $gold;
       opacity: 0.5;
     }
