@@ -387,7 +387,7 @@ export default {
     .middle__wrapper__title {
       color: #F2F0C9;
       font-size: 1.2rem;
-      padding-top: 15px;
+      padding-top: 20px;
     }
     .middle__wrapper__time {
       color: #F2F0C9;
@@ -397,7 +397,7 @@ export default {
       width: 60%;
       display: flex;
       justify-content: space-between;
-      padding-bottom: 15px;
+      padding-bottom: 40px;
       .middle__wrapper__icon__container {
         border: 1px solid $gold;
         border-radius: 50%;
@@ -456,7 +456,7 @@ export default {
 @media screen and (min-width: 850px) {
   .middle__wrapper {
     .middle__wrapper__inner {
-      top: -45%;
+      top: -43%;
     }
   }
 }
@@ -469,6 +469,9 @@ export default {
     .middle__wrapper__content {
       width: 400px;
       height: 400px;
+    }
+    .middle__wrapper__title {
+      font-size: 1.5rem;
     }
   }
   #first-segment, #second-segment, #third-segment, #fourth-segment {

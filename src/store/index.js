@@ -8,12 +8,12 @@ export default new Vuex.Store({
     todoList: [
       {
         id: 1,
-        item: 'Call to Mars',
+        item: 'Clean up the desk',
         isCheck: false
       },
       {
         id: 2,
-        item: 'Clean up the desk',
+        item: 'Write a new blog post',
         isCheck: false
       },
       {

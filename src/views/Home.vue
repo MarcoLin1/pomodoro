@@ -4,10 +4,14 @@
       <form action="">
         <div class="left__wrapper">
           <div class="left__wrapper__circle" />
-          <form action="">
+          <form
+            action=""
+            @submit.stop.prevent="handleNewTodo"
+          >
             <div class="left__wrapper__input__group">
               <input
                 id="text"
+                v-model="newTodo"
                 type="text"
                 name="text"
                 class="left__wrapper__input"
@@ -61,8 +65,29 @@ export default {
   components: {
     Clock
   },
+  data () {
+    return {
+      newTodo: ''
+    }
+  },
   computed: {
     ...mapState(['todoList'])
+  },
+  methods: {
+    handleNewTodo () {
+      const text = this.newTodo && this.newTodo.trim()
+      const length = this.todoList.length - 1
+      const newId = this.todoList[length].id + 1
+      if (!text) {
+        return
+      }
+      this.todoList.push({
+        id: newId,
+        item: text,
+        isCheck: false
+      })
+      this.newTodo = ''
+    }
   }
 }
 </script>
