@@ -86,69 +86,69 @@
           d="M160.17,0A172,172,0,0,0,0,161.51"
         />
       </svg>
-    </div>
-    <div class="middle__wrapper__content middle__wrapper__inner">
-      <div
-        v-if="resting"
-        class="middle__wrapper__title"
-      >
-        Resting
-      </div>
-      <div
-        v-else
-        class="middle__wrapper__title"
-      >
-        {{ nowTodo }}
-      </div>
-      <div class="middle__wrapper__time">
-        {{ timeDisplay() }}
-      </div>
-      <div class="middle__wrapper__icons__wrapper">
+      <div class="middle__wrapper__content middle__wrapper__inner">
         <div
-          v-if="turnOn"
-          class="middle__wrapper__icon__container"
+          v-if="resting"
+          class="middle__wrapper__title"
         >
-          <div
-            class="middle__wrapper__icon icon__ring"
-            @click="handleRingStop"
-          />
+          Resting
         </div>
         <div
           v-else
-          class="middle__wrapper__icon__container"
+          class="middle__wrapper__title"
         >
-          <div
-            class="middle__wrapper__icon icon__ring__off"
-            @click="handleRingStart"
-          />
+          {{ nowTodo }}
         </div>
-        <div
-          v-if="startTimer"
-          class="middle__wrapper__icon__container"
-        >
-          <div
-            class="middle__wrapper__icon icon__play"
-            @click="handleButtonClick"
-          />
+        <div class="middle__wrapper__time">
+          {{ timeDisplay() }}
         </div>
-        <div
-          v-else
-          class="middle__wrapper__icon__container"
-        >
+        <div class="middle__wrapper__icons__wrapper">
           <div
-            class="middle__wrapper__icon icon__pause"
-            @click="handleTimerStop"
-          />
-        </div>
-        <div class="middle__wrapper__icon__container">
+            v-if="turnOn"
+            class="middle__wrapper__icon__container"
+          >
+            <div
+              class="middle__wrapper__icon icon__ring"
+              @click="handleRingStop"
+            />
+          </div>
           <div
-            class="middle__wrapper__icon icon__next"
-            @click="handleToNextTodo"
-          />
+            v-else
+            class="middle__wrapper__icon__container"
+          >
+            <div
+              class="middle__wrapper__icon icon__ring__off"
+              @click="handleRingStart"
+            />
+          </div>
+          <div
+            v-if="startTimer"
+            class="middle__wrapper__icon__container"
+          >
+            <div
+              class="middle__wrapper__icon icon__play"
+              @click="handleButtonClick"
+            />
+          </div>
+          <div
+            v-else
+            class="middle__wrapper__icon__container"
+          >
+            <div
+              class="middle__wrapper__icon icon__pause"
+              @click="handleTimerStop"
+            />
+          </div>
+          <div class="middle__wrapper__icon__container">
+            <div
+              class="middle__wrapper__icon icon__next"
+              @click="handleToNextTodo"
+            />
+          </div>
         </div>
-      </div>
-      <div class="middle__wrapper__footer__text">
-        Next: {{ nextTodo }}
+        <div class="middle__wrapper__footer__text">
+          Next: {{ nextTodo }}
+        </div>
       </div>
     </div>
   </div>
@@ -355,7 +355,6 @@ export default {
 @import '../assets/scss/main.scss';
   .middle__wrapper {
     width: 100%;
-    height: 100%;
     position: relative;
     .middle__wrapper__content {
       width: 330px;
@@ -390,7 +389,7 @@ export default {
     }
     .middle__wrapper__inner {
       position: relative;
-      top: -47%;
+      top: 7%;
     }
     .middle__wrapper__title {
       color: #F2F0C9;
@@ -461,19 +460,8 @@ export default {
     margin-right: 100px;
   }
 }
-@media screen and (min-width: 850px) {
-  .middle__wrapper {
-    .middle__wrapper__inner {
-      top: -43%;
-    }
-  }
-}
-
 @media screen and (min-width: 1015px) {
   .middle__wrapper {
-    .middle__wrapper__inner {
-      top: -46%;
-    }
     .middle__wrapper__content {
       width: 400px;
       height: 400px;

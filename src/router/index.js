@@ -11,11 +11,6 @@ const routes = [
     component: Home
   },
   {
-    path: '/clock',
-    name: 'clock',
-    component: () => import('./../components/Clock.vue')
-  },
-  {
     path: '/list',
     name: 'todo-list',
     component: () => import('./../views/Todo.vue')

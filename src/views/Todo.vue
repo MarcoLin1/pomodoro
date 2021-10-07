@@ -105,17 +105,14 @@ export default {
 @import '../assets/scss/main.scss';
 .todo__wrapper {
   position: relative;
-  margin-top: 20px;
   display: flex;
   .todo__wrapper__left {
-    padding-top: 35px;
     width: 100%;
   }
   .todo__wrapper__right {
     width: 100%;
     height: 100%;
     position: relative;
-    margin: 10px 0 0 10px;
     max-width: 800px;
     .todo__wrapper__right__input__group {
       position: relative;
@@ -157,6 +154,7 @@ export default {
           color: $gold;
           background: none;
           padding: 5px;
+          width: 50%;
           &:focus {
             outline: none;
           }
@@ -255,7 +253,6 @@ export default {
   .todo__wrapper {
     .todo__wrapper__right {
       .todo__wrapper__right__container {
-        // padding-top: 30px;
         width: 380px;
       }
     }

@@ -171,28 +171,17 @@ export default {
 @import '../assets/scss/main.scss';
 .setting__wrapper {
   position: relative;
-  margin-top: 20px;
   display: flex;
   .setting__wrapper__left {
     width: 100%;
-    padding-top: 35px;
   }
   .setting__wrapper__right {
     position: relative;
     margin-left: 10px;
-    // margin-right: 10px;
-    // padding-top: 10px;
     width: 100%;
     max-width: 800px;
     &__container {
-      // position: relative;
-      // top: 10%;
-      // display: flex;
-      // flex-direction: column;
-      // align-items: center;
-      width: 100%;
-      width: 300px;
-      padding-top: 20px;
+      max-width: 330px;
       padding-right: 10px;
     }
     &__group {

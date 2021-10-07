@@ -55,17 +55,15 @@
 @import '../assets/scss/main.scss';
 .chart__wrapper {
   position: relative;
-  margin-top: 20px;
   display: flex;
   .chart__wrapper__left {
     width: 100%;
-    padding-top: 35px;
   }
   .chart__wrapper__right {
     position: relative;
     width: 100%;
     height: 100%;
-    margin: 10px 0 0 10px;
+    margin: -10px 0 0 0;
     max-width: 800px;
     &__container {
       position: absolute;
@@ -174,15 +172,7 @@ export default {
         maintainAspectRatio: false,
         legend: {
           display: false
-          // labels: {
-          //   fontColor: '#F2F0C9'
-          // }
         }
-        // title: {
-        //   display: true,
-        //   fontSize: '14',
-        //   text: 'Hello'
-        // }
       },
       positiveChartColors: {
         borderColor: '#F2F0C9',
