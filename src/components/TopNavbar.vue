@@ -1,10 +1,13 @@
 <template>
   <div class="top__navbar__container">
     <div class="top__navbar__wrapper">
-      <div class="top__navbar__title">
+      <router-link
+        class="top__navbar__title"
+        to="/"
+      >
         Tomato
         <span class="top__navbar__text">To-Do-List Alarm System</span>
-      </div>
+      </router-link>
       <div class="top__navbar__circle" />
       <label
         for="top__navbar__checkbox"
@@ -87,6 +90,7 @@ export default {
     font-weight: 600;
     margin-right: 10px;
     color: $gold;
+    text-decoration: none;
   }
   .top__navbar__text {
     border-left: 1px solid $gold;
